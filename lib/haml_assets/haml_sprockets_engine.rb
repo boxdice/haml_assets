@@ -51,11 +51,11 @@ module HamlAssets
       end
 
       def self.included(klass)
-        klass.instance_eval do
-          include Rails.application.routes.url_helpers
-          include Rails.application.routes.mounted_helpers
-          include ActionView::Helpers
+        include Rails.application.routes.url_helpers
+        include Rails.application.routes.mounted_helpers
+        include ActionView::Helpers
 
+        klass.instance_eval do
           alias_method :output_buffer_without_haml, :output_buffer
           alias_method :output_buffer, :output_buffer_with_haml
 
